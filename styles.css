@@ -1,0 +1,258 @@
+:root {
+  color-scheme: light;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Sans", "Microsoft YaHei", sans-serif;
+  --ink: #1d2430;
+  --muted: #667085;
+  --line: #d8dee8;
+  --panel: #f7f8fb;
+  --accent: #0f766e;
+  --accent-dark: #0b5d57;
+  --paper: #fffdf8;
+  --danger: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #e9edf2;
+  color: var(--ink);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 24px;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.brand p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.control-group {
+  display: grid;
+  gap: 8px;
+}
+
+.control-group > label,
+.control-group > .label {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+select,
+input[type="file"],
+textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 86px;
+  line-height: 1.45;
+}
+
+button {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #98a2b3;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.segmented,
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.button-row {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button-row.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.status-text {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.segmented button.active {
+  border-color: var(--accent);
+  background: #dff5f1;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+  font-weight: 800;
+}
+
+.primary:hover {
+  border-color: var(--accent-dark);
+  background: var(--accent-dark);
+}
+
+.secondary {
+  background: #fff;
+}
+
+#deleteBtn {
+  color: var(--danger);
+}
+
+.checks {
+  display: grid;
+  gap: 8px;
+  color: #344054;
+  font-size: 14px;
+}
+
+.checks label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note {
+  margin-top: auto;
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid #c9d7e8;
+  border-radius: 8px;
+  background: #eef6ff;
+  color: #344054;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.workspace {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.toolbar div {
+  display: grid;
+  gap: 4px;
+}
+
+.toolbar strong {
+  font-size: 16px;
+}
+
+.toolbar span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stage-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  padding: 26px;
+  background:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.035) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.035) 75%);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    0 12px,
+    12px -12px,
+    -12px 0;
+}
+
+canvas {
+  display: block;
+  background: var(--paper);
+  border: 1px solid #b9c2cf;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
+  touch-action: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 840px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
