@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="按真实纸张尺寸排版照片和明信片，导出便利店打印用 PDF。" />
+    <title>PrintBento · 便利店拼图</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <aside class="panel">
+        <div class="brand">
+          <h1>便利店拼图</h1>
+          <p>按真实毫米尺寸排版并导出 PDF</p>
+        </div>
+
+        <section class="control-group">
+          <label for="paperSelect">纸张</label>
+          <select id="paperSelect"></select>
+        </section>
+
+        <section class="control-group">
+          <label>方向</label>
+          <div class="segmented" role="group" aria-label="纸张方向">
+            <button id="portraitBtn" class="active" type="button">竖向</button>
+            <button id="landscapeBtn" type="button">横向</button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <label for="templateSelect">模板</label>
+          <select id="templateSelect">
+            <option value="stack2">上下两张横图</option>
+            <option value="idGrid">证件照网格</option>
+            <option value="postcardFree">明信片白板</option>
+          </select>
+        </section>
+
+        <section id="idControls" class="control-group hidden">
+          <label for="idSizeSelect">证件照尺寸</label>
+          <select id="idSizeSelect">
+            <option value="35x45">35 x 45 mm</option>
+            <option value="35x49">2寸 35 x 49 mm</option>
+            <option value="25x35">1寸 25 x 35 mm</option>
+            <option value="30x40">履历书 30 x 40 mm</option>
+          </select>
+        </section>
+
+        <section class="control-group">
+          <label for="imageInput">照片</label>
+          <input id="imageInput" type="file" accept="image/*" multiple />
+        </section>
+
+        <section class="control-group">
+          <label>定位元素</label>
+          <div class="button-row two">
+            <button id="addLocationBtn" type="button">加入定位</button>
+            <button id="refreshLocationBtn" type="button">当前位置</button>
+          </div>
+          <span id="locationStatus" class="status-text">可添加经纬度和自定义地址文字。</span>
+        </section>
+
+        <section id="selectedControls" class="control-group hidden">
+          <label>选中元素</label>
+          <div class="button-row">
+            <button id="fitBtn" type="button">完整</button>
+            <button id="coverBtn" type="button">填满</button>
+            <button id="deleteBtn" type="button">删除</button>
+          </div>
+        </section>
+
+        <section id="locationControls" class="control-group hidden">
+          <label for="locationTextInput">定位文字</label>
+          <textarea id="locationTextInput" rows="4"></textarea>
+        </section>
+
+        <section class="control-group">
+          <label>辅助线</label>
+          <div class="checks">
+            <label><input id="guideToggle" type="checkbox" checked /> 裁切线</label>
+            <label><input id="marginToggle" type="checkbox" checked /> 安全边距</label>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <button id="resetBtn" class="secondary" type="button">重置模板</button>
+          <button id="exportBtn" class="primary" type="button">导出 PDF</button>
+        </section>
+
+        <div class="note">
+          <strong id="paperReadout"></strong>
+          <span>便利店打印时尽量选择等倍、无缩放。普通纸请保留安全边距。</span>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <div class="toolbar">
+          <div>
+            <strong id="templateTitle">上下两张横图</strong>
+            <span id="templateHint">上传两张照片后自动放入上下框。</span>
+          </div>
+          <span id="selectionReadout">未选中照片</span>
+        </div>
+        <div id="stageWrap" class="stage-wrap">
+          <canvas id="stage" aria-label="拼图预览"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
